@@ -1,0 +1,22 @@
+Compile:
+
+./configure; make
+
+Tested on Linux, FreeBSD and OpenBSD
+
+Install:
+
+make install
+
+(it will copy notifyme binary to /usr/local/bin with root as owner
+and with permissions set to 0755)
+
+edit notifyrc.sample and copy to $HOME/.notifyrc	
+
+If you find this tool useful then probably 
+it will be a good idea to put following line:
+
+/usr/bin/notifyme
+
+to your profile file (ie. $HOME/.bash_profile)
+

@@ -1,0 +1,24 @@
+18 Jul 2001:
+	changes to configure.in (errx, snprintf, utmpx)
+13 Jul 2001:
+	Added some basic SunOS ports for it to work on few SUN
+	machines in my Univ network - Srijith
+14 Jun 2001:
+	fixed bug in 'make install'
+13 Jun 2001: 
+	LoginExec bugfixes.
+08 Jun 2001: 
+	fork and exec cleanpus. CENTER_MSG removed from default settings.
+	If there is no resource file and usernames in command line then
+	all login and logouts are reported.
+23 May 2001:
+	Added LoginExec and LogoutExec options.
+	Thank you Derek for you suggestions.
+8 Jan 2001:
+	Almost full rewrite, added lot of directives to config file
+7 Apr 2000:
+	Added watching hosts and logouts, configurable messages
+
+Somewhere in 1999:
+	first version
+

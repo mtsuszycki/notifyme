@@ -1,0 +1,4 @@
+- check errx issues (SunOS)
+- fix snprintf issues
+- check for utmpx (SunOS)
+- signal handling (SunOS)

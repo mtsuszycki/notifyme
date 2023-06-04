@@ -1,0 +1,54 @@
+dnl Process this file with autoconf to produce a configure script.
+AC_INIT(notifyme.c)
+AM_INIT_AUTOMAKE(notifyme, 1.4.5)
+
+AC_SUBST(VERSION)
+AC_SUBST(PACKAGE)
+
+AM_CONFIG_HEADER(config.h)
+
+dnl Checks for programs.
+AC_PROG_CC
+AC_PROG_INSTALL
+
+dnl Checks for header files.
+AC_HEADER_STDC
+AC_CHECK_HEADERS(fcntl.h sys/ioctl.h unistd.h utmpx.h)
+
+dnl Checks for typedefs, structures, and compiler characteristics.
+
+UTMP_OK=0
+UTMPX_OK=0
+
+AC_MSG_CHECKING([for utmp structure members])
+AC_TRY_COMPILE([#include <utmp.h>],
+[
+struct utmp u;
+u.ut_line[0] = 0;
+u.ut_host[0] = 0;
+u.ut_user[0] = 0;
+]
+, [AC_MSG_RESULT(yes); UTMP_OK=1], AC_MSG_RESULT(no))
+
+if test "$UTMP_OK" != "1"; then
+AC_MSG_CHECKING([for utmpx structure members])
+AC_TRY_COMPILE([#include <utmpx.h>],
+[
+struct utmpx u;
+u.ut_line[0] = 0;
+u.ut_host[0] = 0;
+u.ut_user[0] = 0;
+]
+, [AC_MSG_RESULT(yes); UTMPX_OK=1 ; AC_DEFINE(HAVE_UTMPX)], AC_MSG_RESULT(no))
+fi
+
+if test  "$UTMP_OK" != "1" -a  "$UTMPX_OK" != "1" ; then
+AC_MSG_ERROR([Cannot find all utmp or utmpx members])
+fi
+
+dnl Checks for library functions.
+AC_PROG_GCC_TRADITIONAL
+AC_TYPE_SIGNAL
+AC_CHECK_FUNCS(errx snprintf setutxent)
+
+AC_OUTPUT(Makefile)
