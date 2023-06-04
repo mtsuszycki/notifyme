@@ -11,6 +11,9 @@ It's fully configurable, allowing to specify a message, duration, beep and optio
 for each watched username.
 See notifyrc.sample below.
 
+It was written back in a day when working mostly via ssh on terminals on a busy server with hundreds of terminal users.
+Notifyme helped knowing when friends were opening/closing sessions
+
 You can run it just with command line arguments (see below) but if you
 want more flexibility then resource file should be created.
 In a resource file ($HOME/.notifyrc by default) you can specify
